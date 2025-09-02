@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/news/layout.html}">
+
+<head> </head>
+
+<body>
+	<div layout:fragment="content">
+
+		<!-- Feature post -->
+		<th:block th:insert="~{${pathBaseTemplate} + '/index/articleFeaturePost'}"></th:block>
+
+		<!-- Latest -->
+		<section class="bg0 p-t-60">
+			<div class="container">
+				<div class="row justify-content-center">
+					<th:block th:insert="~{${pathBaseTemplate} + '/index/articleLatest'}"></th:block>
+					<th:block th:insert="~{${pathElements} + 'sidebar'}"></th:block>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</body>
+
+</html>

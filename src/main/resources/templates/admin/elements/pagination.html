@@ -1,0 +1,21 @@
+<div class="pagination-summary">
+  <p th:text="${@paginationUtil.getPaginationSummary(items)}"></p>
+</div>
+<nav class="datatable-pagination">
+  <ul class="datatable-pagination-list" th:if="${items.totalPages > 1}">
+    <li
+      th:each="item : ${@paginationUtil.buildPagination(pathBase + '?sort' + sort + '&size=' + items.size + '&', items)}"
+      th:classappend="${item.class}"
+      class="datatable-pagination-item"
+    >
+      <a
+        th:href="${item.href}"
+        th:classappend="${item.disabled} ? 'disabled' : ''"
+        class="datatable-pagination-link"
+        th:utext="${item.label}"
+      >
+        ></a
+      >
+    </li>
+  </ul>
+</nav>

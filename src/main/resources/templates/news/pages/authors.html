@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/news/layout.html}">
+
+<head> </head>
+
+<body>
+    <div layout:fragment="content">
+
+        <!-- Category Title -->
+        <div class="container p-t-4 p-b-40">
+            <h2 class="f1-l-1 cl2" th:text="${authorBySlug.name}"></h2>
+        </div>
+
+        <!-- Article -->
+        <section class="bg0 p-b-55">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Main content -->
+                    <div class="col-md-10 col-lg-8 p-b-80">
+                        <!-- Thymeleaf conditional rendering -->
+
+                        <div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-6 p-r-25 p-r-15-sr991" th:each=" item : ${items}">
+                                        <div class="m-b-45 d-flex flex-column h-100">
+                                            <a href="/runner-viet-nam-chay-42-giai-marathon-nam-2024-a37.html"
+                                                class="wrap-pic-w hov1 trans-03">
+                                                <div class="image-container" style="height: 200px; overflow: hidden;">
+                                                    <img src="/uploads/images/1736442578324_16.jpg" alt="IMG"
+                                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                                </div>
+                                            </a>
+                                            <div class="p-t-16 flex-grow-1">
+                                                <h5 class="p-b-5">
+                                                    <a href="/runner-viet-nam-chay-42-giai-marathon-nam-2024-a37.html"
+                                                        class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                        <span th:text="${item.name}"></span>
+                                                    </a>
+                                                </h5>
+                                                <span class="cl8">
+                                                    <a href="/tac-gia-pham-vuong-quy-a1.html"
+                                                        class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                        <span th:text="${item.author.name}"></span>
+                                                    </a>
+                                                    <span class="f1-s-3 m-rl-3">-</span>
+                                                    <span class="f1-s-3">
+                                                        <span
+                                                            th:text="${#temporals.format(item.publicDate, 'dd/MM/yyyy')}">
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add pagination with baseUrl -->
+                        <div>
+                            <th:block th:insert="~{${pathElements} + 'pagination'}"></th:block>
+                        </div>
+                    </div>
+                    <!-- Sidebar -->
+                    <th:block th:insert="~{${pathElements} + 'sidebar'}"></th:block>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

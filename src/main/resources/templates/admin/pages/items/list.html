@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/admin/layout.html}"
+>
+  <head> </head>
+  <body>
+    <main layout:fragment="content">
+      <div class="container-fluid px-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="mt-4 mb-4">Quản Lý Items</h1>
+          <a th:href="@{${pathBase} + '/form'}" class="btn btn-dark"
+            >Thêm mới</a
+          >
+        </div>
+
+        <th:block th:insert="~{${pathElements} + 'notify'}"></th:block>
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Bộ lọc, sắp xếp và tìm kiếm
+          </div>
+
+          <div class="card-body">
+            <div class="filter-container">
+              <div class="d-flex w-100 justify-content-between flex-wrap">
+                <th:block th:insert="~{${pathElements} + 'filter'}"></th:block>
+                <th:block th:insert="~{${pathElements} + 'search'}"></th:block>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mt-4">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <i class="fas fa-table me-1"></i>
+              Danh sách mục
+            </div>
+          </div>
+          <div class="card-body">
+            <form method="post" id="batchUpdateForm" action="">
+              <div class="datatable-top flex-wrap">
+                <th:block
+                  th:insert="~{${pathElements} + 'action-multi'}"
+                ></th:block>
+                <th:block
+                  th:insert="~{${pathElements} + 'choose-size'}"
+                ></th:block>
+              </div>
+              <div
+                class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns"
+              >
+                <div class="datatable-container">
+                  <table
+                    id="datatablesSimple"
+                    class="datatable-table text-center"
+                  >
+                    <thead>
+                      <tr>
+                        <th class="text-center">
+                          <input type="checkbox" id="checkAll" />
+                        </th>
+
+                        <th class="text-center">
+                          <th:block
+                            th:utext="${@linkUtil.buildSortLinkIcon('Tên', pathBase, sort, 'name')}"
+                          ></th:block>
+                        </th>
+
+                        <th class="text-center">Trạng thái</th>
+
+                        <th class="text-center">
+                          <th:block
+                            th:utext="${@linkUtil.buildSortLinkIcon('Thứ tự', pathBase, sort, 'ordering')}"
+                          ></th:block>
+                        </th>
+
+                        <th class="text-center">Hành động</th>
+                      </tr>
+                    </thead>
+                    <!-- LIST ITEM -->
+                    <tbody>
+                      <tr th:each="item : ${items}">
+                        <td>
+                          <input
+                            type="checkbox"
+                            name="selectedItems"
+                            th:value="${item.id}"
+                            class="itemCheckbox"
+                          />
+                        </td>
+
+                        <td
+                          th:utext="${@textUtil.highlightSearchTerm(item.name, search)}"
+                        ></td>
+                        <!-- <td th:text="${item.status}"></td> -->
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <select
+                              name="status-table"
+                              id=""
+                              class="form-select status-select text-center w-75"
+                              th:attr="data-item-id=${item.id}"
+                            >
+                              <option
+                                value="ACTIVE"
+                                th:selected="${item.status.name() =='ACTIVE'}"
+                              >
+                                Kích hoạt
+                              </option>
+                              <option
+                                value="INACTIVE"
+                                th:selected="${item.status.name() =='INACTIVE'}"
+                              >
+                                Chưa kích hoạt
+                              </option>
+                            </select>
+                          </div>
+                        </td>
+
+                        <td class="d-flex justify-content-center">
+                          <input
+                            type="number"
+                            name="ordering"
+                            id=""
+                            class="form-control ordering-input text-center"
+                            th:value="${item.ordering}"
+                            placeholder=""
+                            min="1"
+                            style="max-width: 100px"
+                          />
+                        </td>
+
+                        <td>
+                          <th:block
+                            th:insert="~{${pathElements} + 'action-btn'}"
+                          ></th:block>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="datatable-bottom mt-4">
+                  <th:block
+                    th:insert="~{${pathElements} + 'pagination'}"
+                  ></th:block>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

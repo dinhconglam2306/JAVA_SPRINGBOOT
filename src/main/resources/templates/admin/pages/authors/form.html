@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/admin/layout.html}">
+
+<head> </head>
+
+<body>
+  <main layout:fragment="content">
+    <div class="container-fluid px-4">
+      <h1 class="pt-4 pb-4">Quản lý tác giả</h1>
+
+      <!-- Form Card -->
+      <div class="card mb-4 mt-4">
+        <div class="card-header">
+          <i class="fas fa-edit me-1"></i>
+          <span th:text="${#strings.isEmpty(item.id) ? 'Thêm mới' : 'Chỉnh sửa'}"></span>
+        </div>
+        <div class="card-body">
+          <form th:action="@{${pathBase + '/save' + (item.id != null ? '/' + item.id : '' )}}" method="post"
+            th:object="${item}">
+            <!-- Name Field -->
+            <div class="mb-3">
+              <label for="inputName" class="form-label fw-bold">Tên</label>
+              <input type="text" name="name" id="inputName" class="form-control" th:value="${item.name}"
+                placeholder="Nhập tên..." />
+              <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+
+            <!-- Slug Field -->
+            <div class="mb-3">
+              <label for="inputSlug" class="form-label fw-bold">Slug</label>
+              <input type="text" name="slug" id="inputSlug" class="form-control" th:value="${item.slug}"
+                placeholder="Nhập slug..." />
+              <div class="text-danger" th:if="${#fields.hasErrors('slug')}" th:errors="*{slug}"></div>
+            </div>
+
+            <!-- Status Field -->
+            <div class="mb-3">
+              <label for="inputStatus" class="form-label fw-bold">Trạng thái</label>
+              <select name="status" id="inputStatus" class="form-select">
+                <option value="ACTIVE" th:selected="${item.status.name() == 'ACTIVE'}">
+                  Kích hoạt
+                </option>
+                <option value="INACTIVE" th:selected="${item.status.name() == 'INACTIVE'}">
+                  Chưa kích hoạt
+                </option>
+              </select>
+              <div class="text-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+            </div>
+            <!-- Ordering Field -->
+            <div class="mb-3">
+              <label for="inputOrdering" class="form-label fw-bold">Thứ tự</label>
+              <input type="number" name="ordering" id="inputOrdering" class="form-control" th:value="${item.ordering}"
+                placeholder="Nhập thứ tự" />
+              <div class="text-danger" th:if="${#fields.hasErrors('ordering')}" th:errors="*{ordering}"></div>
+            </div>
+
+            <!-- Content Field -->
+            <div class="mb-3">
+              <label for="inputOrdering" class="form-label fw-bold">Nội dung</label>
+              <textarea name="content" id="inputContent" class="form-control" th:text="${item.content}">
+                </textarea>
+              <div class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <a th:href="@{${pathBase}}" class="btn btn-danger">Quay Lại</a>
+            <button type="submit" class="btn btn-dark">Lưu lại</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

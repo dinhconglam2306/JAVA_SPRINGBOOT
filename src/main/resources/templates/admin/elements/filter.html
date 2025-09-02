@@ -1,0 +1,24 @@
+<div class="d-flex">
+  <div class="btn-group me-2 mt-1" role="group" aria-label="Filter by status">
+    <a
+      th:href="@{${pathBase}}"
+      th:classappend="${statusFilter == null} ? 'btn-dark': 'btn-outline-secondary'"
+      class="btn"
+      >Tất cả (<span th:text="${totalAllItems}"></span>)</a
+    >
+
+    <a
+      th:href="@{${pathBase} + '?statusFilter=ACTIVE'}"
+      th:classappend="${statusFilter == 'ACTIVE'} ? 'btn-dark': 'btn-outline-secondary'"
+      class="btn"
+      >Kích hoạt (<span th:text="${totalActiveItems}"></span>)</a
+    >
+
+    <a
+      th:href="@{${pathBase} + '?statusFilter=INACTIVE'}"
+      th:classappend="${statusFilter == 'INACTIVE'} ? 'btn-dark': 'btn-outline-secondary'"
+      class="btn"
+      >Chưa kích hoạt (<span th:text="${totalInactiveItems}"></span>)</a
+    >
+  </div>
+</div>

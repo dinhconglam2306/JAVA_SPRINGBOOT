@@ -1,0 +1,20 @@
+<div class="float-start d-flex align-items-center">
+  <div>
+    <select name="action-multi" id="" class="form-select datatable-selector">
+      <option value="" selected>Hành động</option>
+      <option th:value="${pathBase} + '/batch-update-status?status=ACTIVE'">
+        Kích hoạt
+      </option>
+      <option th:value="${pathBase} + '/batch-update-status?status=INACTIVE'">
+        Chưa kích hoạt
+      </option>
+      <option th:value="${pathBase} + '/batch-update-ordering?sort=name,asc'">
+        Thay đổi thứ tự
+      </option>
+      <option th:value="${pathBase} + '/batch-delete?sort=name,asc'">Xóa mục</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-dark" id="apply-button" disabled>
+    Áp dụng
+  </button>
+</div>

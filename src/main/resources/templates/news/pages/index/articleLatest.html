@@ -1,0 +1,56 @@
+<div class="col-md-10 col-lg-8">
+    <div th:each="categoryEntry : ${itemsArticle}">
+        <div class="how2 how2-cl4 flex-s-c m-r-10 m-r-0-sr991">
+            <!-- Tên danh mục -->
+            <h3 class="f1-m-2 cl3 tab01-title" th:text="${categoryEntry.key.name}"></h3>
+        </div>
+
+        <div class="row p-t-35">
+            <!-- Hiển thị theo layout LIST -->
+
+
+            <!-- Hiển thị theo layout GRID -->
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-6 p-r-25 p-r-15-sr991" th:each="article : ${categoryEntry.value}">
+                        <div class="m-b-45 d-flex flex-column h-100">
+                            <a href="/kinh-te-my-canada-gan-bo-voi-nhau-nhu-the-nao-a22.html"
+                                class="wrap-pic-w hov1 trans-03">
+                                <div class="image-container" style="height: 200px; overflow: hidden;">
+                                    <img src="/uploads/images/1736362682023_1.jpg" alt="IMG"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </a>
+                            <div class="p-t-16 flex-grow-1">
+                                <h5 class="p-b-5">
+                                    <a href="/kinh-te-my-canada-gan-bo-voi-nhau-nhu-the-nao-a22.html"
+                                        class="f1-m-3 cl2 hov-cl10 trans-03">
+                                        <span th:text="${article.name}"></span>
+                                    </a>
+                                </h5>
+                                <span class="cl8">
+                                    <a href="/tac-gia-pham-vuong-quy-p1.html" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                        <span th:text="${article.author.name}"></span>
+                                    </a>
+                                    <span class="f1-s-3 m-rl-3">-</span>
+                                    <span class="f1-s-3">
+                                        <span th:text="${#temporals.format(article.publicDate, 'dd/MM/yyyy')}"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Load More Button -->
+        <div class="row m-b-45">
+            <div class="col-12 text-center">
+                <button class="load-more-btn btn btn-outline-dark" data-category-id="7" data-offset="2"
+                    style="padding: 12px 30px; font-size: 16px; border-radius: 25px; font-weight: 500; border-width: 2px;">
+                    Xem thêm ...
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

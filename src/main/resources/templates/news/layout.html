@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:insert="~{${pathElements} + 'head'}"> </head>
+
+
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
+
+    <!-- Header -->
+    <header th:insert="~{${pathElements} + 'header'}"><!-- Header desktop --></header>
+
+    <!-- Headline -->
+    <div class="container">
+        <div class="bg0 flex-wr-sb-c p-tb-8">
+            <th:block th:insert="~{${pathElements} + 'headline'}"></th:block>
+            <th:block th:insert="~{${pathElements} + 'headline_search'}"></th:block>
+        </div>
+    </div>
+    <div layout:fragment="content"></div>
+    <!-- Footer -->
+    <footer th:insert="~{${pathElements} + 'footer'}"></footer>
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <span class="fas fa-angle-up"></span>
+        </span>
+    </div>
+
+    <th:block th:insert="~{${pathElements} + 'scripts'}"></th:block>
+
+    <div class="selection_bubble_root" style="display: none;"></div>
+</body>
+
+</html>

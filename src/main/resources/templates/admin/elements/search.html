@@ -1,0 +1,22 @@
+<form
+  th:action="@{${pathBase}}"
+  method="get"
+  class="d-flex flex-wrap"
+  id="filter-search-sort"
+>
+  <div class="datatable-search d-inline me-2 mt-1">
+    <div>
+      <input
+        type="search"
+        name="search"
+        id=""
+        class="form-control"
+        th:value="${search}"
+        placeholder="Nhập từ khóa..."
+      />
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-dark me-2 mt-1">Tìm kiếm</button>
+  <a th:href="@{${pathBase}}" class="btn btn-primary mt-1">Đặt Lại</a>
+</form>

@@ -1,0 +1,9 @@
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.5;
+}

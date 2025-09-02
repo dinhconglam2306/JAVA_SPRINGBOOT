@@ -1,0 +1,13 @@
+<div class="float-end d-flex align-items-center">
+  <div style="width: auto">
+    <select id="change-size" class="form-select d-inline me-2">
+      <option
+        th:each="size : ${listSizes}"
+        th:value="@{|${pathBase}|(sort=${sort}, size=${size})}"
+        th:selected="${items.size == size }"
+      >
+        <span th:text="${size}"></span>
+      </option>
+    </select>
+  </div>
+</div>

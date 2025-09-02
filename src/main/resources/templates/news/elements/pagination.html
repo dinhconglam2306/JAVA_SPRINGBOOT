@@ -1,0 +1,5 @@
+<div class="flex-wr-s-c m-rl--7 p-t-15" th:if="${items.totalPages > 1}">
+    <!-- First Page -->
+    <a th:each="pageInfo : ${paginationInfo}" th:href="${pageInfo.href}"
+        th:class="${'flex-c-c pagi-item hov-btn1 trans-03 m-all-7 ' + pageInfo.class}" th:text="${pageInfo.label}">1</a>
+</div>
