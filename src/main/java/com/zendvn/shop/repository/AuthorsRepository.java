@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.zendvn.shop.enums.Status;
-import com.zendvn.shop.model.Articles;
 import com.zendvn.shop.model.Authors;
 
 
